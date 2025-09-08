@@ -7,14 +7,14 @@ preserve_dotfiles_in_output = false
 minify_html = true
 compile_sass = true
 hard_link_static = false
-build_search_index = true
+build_search_index = false
 
 ignored_content = []
 ignored_static = []
 
 # feeds
 generate_feeds = true
-feed_filenames = ["rss.xml"]
+feed_filenames = ["atom.xml"]
 author = "Ryoga.exe"
 default_language = "ja"
 # feed_limit = 20
