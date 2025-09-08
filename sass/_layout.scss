@@ -11,6 +11,13 @@
   gap: 1rem;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-block-size: 100svh;
+}
+
 // header
 header {
   border-bottom: 1px solid var(--border);
@@ -31,3 +38,19 @@ header {
 }
 
 // footer
+footer {
+  width: 100%;
+  margin-block-start: auto;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+
+  small {
+    font-size: 0.875rem;
+  }
+
+  svg {
+    display: block;
+    inline-size: 100%;
+    block-size: 100%;
+  }
+}

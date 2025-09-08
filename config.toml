@@ -56,7 +56,7 @@ include_path = false
 include_content = true
 
 [extra]
-author = "Ryoga.exe"
+social_links = { x = "https://x.com/Ryoga_exe", github = "https://github.com/Ryoga-exe" }
 og_image = "/og-default.png"
 show_toc = true
 
