@@ -1,0 +1,25 @@
+{% set m = config.extra.math %}
+{% if (m and m.enable) or (page and page.extra and page.extra.math) %}
+  {% if not m or (m.engine == "katex") %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        if (typeof renderMathInElement !== 'function') return;
+        renderMathInElement(document.body, {
+          // Important: Put block delimiters before inline to avoid $$ being
+          // prematurely matched by single-$ inline rules.
+          delimiters: [
+            {left: "{{ m.block_left | default(value="$$") }}", right: "{{ m.block_right | default(value="$$") }}", display: true},
+            {left: "\\[", right: "\\]", display: true},
+            {left: "{{ m.inline_left | default(value="$") }}", right: "{{ m.inline_right | default(value="$") }}", display: false}
+          ],
+          // Do not try inside code/pre and other non-content tags
+          ignoredTags: ["script", "noscript", "style", "textarea", "pre", "code"],
+          throwOnError: false
+        });
+      });
+    </script>
+  {% endif %}
+{% endif %}
