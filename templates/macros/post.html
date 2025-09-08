@@ -1,0 +1,16 @@
+{% macro post_listing(category) %}
+  <ul class="post-list">
+    {% for p in category.pages | sort(attribute="path") | sort(attribute="date") | reverse | slice(end=5) %}
+      {% set parent = get_section(path=(p.components | slice(end=-1) | concat(with="_index.md") | join(sep="/"))) %}
+      <li>
+        <article>
+          <a href="{{ p.permalink }}">{{ p.title }}</a>
+          {% if parent.title %}
+            <span class="badge">{{ parent.title }}</span>
+          {% endif %}
+          <time datetime="{{ p.date }}">{{ p.date | date(format="%Y-%m-%d") }}</time>
+        </article>
+      </li>
+    {% endfor %}
+  </ul>
+{% endmacro post_listing %}
