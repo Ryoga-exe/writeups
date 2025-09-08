@@ -1,0 +1,33 @@
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+// header
+header {
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(6px);
+  background: color-mix(in oklab, var(--bg) 85%, transparent);
+
+  .brand {
+    font-weight: 700;
+  }
+
+  nav {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+  }
+}
+
+// footer

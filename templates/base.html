@@ -2,7 +2,41 @@
 <html lang="{{ config.default_language | default(value='ja') }}">
   <head>
     {% include "components/head.html" %}
-    <link href="css/style.css" rel="stylesheet" />
+    {% include "components/math.html" %}
   </head>
-  <body></body>
+  <body>
+    {% include "components/header.html" %}
+    <main class="container">
+      {% block content %}{% endblock content %}
+    </main>
+    {% include "components/footer.html" %}
+    <script>
+      const theme = (() => {
+        if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+          return localStorage.getItem("theme");
+        }
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          return "dark";
+        }
+        return "light";
+      })();
+
+      const root = document.documentElement;
+      root.setAttribute("data-theme", theme);
+      localStorage.setItem("theme", theme);
+
+      document.querySelector("#theme-switcher").addEventListener("click", () => {
+        const switched = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+        root.setAttribute("data-theme", switched);
+        localStorage.setItem("theme", switched);
+      })
+    </script>
+    <noscript>
+      <style>
+        #theme-switcher {
+          display: none;
+        }
+      </style>
+    </noscript>
+  </body>
 </html>

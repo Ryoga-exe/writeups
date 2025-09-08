@@ -1,0 +1,59 @@
+:root {
+  --bg: #0f1216;
+  --fg: #e6e6e6;
+  --muted: #9aa1a9;
+  --link: #7aa2f7;
+  --border: #2a2f36;
+  --badge-bg: #1f2430;
+
+  &[data-theme="light"] {
+    --bg: #ffffff;
+    --fg: #1e2127;
+    --muted: #5c6370;
+    --link: #1a5fb4;
+    --border: #e5e7eb;
+    --badge-bg: #eef2ff;
+  }
+}
+
+#theme-switcher {
+  // display: block;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--fg);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5em;
+  cursor: pointer;
+
+  svg {
+    display: block;
+    inline-size: 100%;
+    block-size: 100%;
+  }
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+[data-theme="light"] {
+  #theme-switcher {
+    .light {
+      display: none;
+    }
+    .dark {
+      display: block;
+    }
+  }
+}
+
+[data-theme="dark"] {
+  #theme-switcher {
+    .light {
+      display: block;
+    }
+    .dark {
+      display: none;
+    }
+  }
+}
