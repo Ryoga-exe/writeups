@@ -1,0 +1,34 @@
+{% set title = config.title %}
+{% if page.title %}
+  {% set title = page.title ~ ' | ' ~ title %}
+{% elif section.title %}
+  {% set title = section.title ~ ' | ' ~ title %}
+{% endif %}
+{% set description = page.description | default(value=section.description | default(value=config.description)) %}
+{% set og_img = (page.extra.og_image | default(value=config.extra.og_image)) %}
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{{ title }}</title>
+<meta name="description" content="{{ description }}" />
+<meta name="author" content="{{ config.author | default(value='') }}" />
+<meta name="generator" content="zola 0.21.0" />
+<meta name="color-scheme" content="light dark" />
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="{{ title }}" />
+<meta property="og:description" content="{{ description }}" />
+{% if og_img %}<meta property="og:image" content="{{ get_url(path=og_img) }}" />{% endif %}
+<meta property="og:url" content="{{ current_url | default(value=config.base_url) }}" />
+<meta property="og:site_name" content="{{ config.title }}" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@Ryoga_exe" />
+<meta name="twitter:creator" content="@Ryoga_exe" />
+
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  title="Feed"
+  href="{{ get_url(path='atom.xml') }}"
+/>
