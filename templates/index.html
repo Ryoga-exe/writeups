@@ -1,1 +1,29 @@
+{% import "macros/post.html" as post_macros %}
 {% extends "base.html" %}
+
+{% block content %}
+  <section>
+    <h1>Writeups</h1>
+    <p>{{ config.description }}</p>
+  </section>
+
+  {% set ctf = get_section(path="ctf/_index.md") %}
+  {% set cp = get_section(path="cp/_index.md") %}
+  {% set others = get_section(path="others/_index.md") %}
+
+  <section>
+    <h2>Latest CTF Writeups</h2>
+    {{ post_macros::post_listing(category=ctf) }}
+  </section>
+
+  <section>
+    <h2>Latest CP Writeups</h2>
+    {{ post_macros::post_listing(category=cp) }}
+  </section>
+
+  <section>
+    <h2>Latest Other Writeups</h2>
+    {{ post_macros::post_listing(category=others) }}
+  </section>
+
+{% endblock content%}

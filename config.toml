@@ -1,6 +1,6 @@
 base_url = "https://writeups.ryoga.dev"
 title = "Writeups"
-description = "Writeups by Ryoga"
+description = "Ryoga の Writeup 置き場"
 
 output_dir = "public"
 preserve_dotfiles_in_output = false
@@ -56,7 +56,6 @@ include_path = false
 include_content = true
 
 [extra]
-social_links = { x = "https://x.com/Ryoga_exe", github = "https://github.com/Ryoga-exe" }
 og_image = "/og-default.png"
 show_toc = true
 
@@ -67,3 +66,7 @@ inline_left = "$"
 inline_right = "$"
 block_left = "$$"
 block_right = "$$"
+
+[extra.social]
+x = "https://x.com/Ryoga_exe"
+github = "https://github.com/Ryoga-exe"
