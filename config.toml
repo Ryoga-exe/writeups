@@ -1,16 +1,69 @@
-# The URL the site will be built for
 base_url = "https://writeups.ryoga.dev"
+title = "Writeups"
+description = "Writeups by Ryoga"
 
-# Whether to automatically compile all Sass files in the sass directory
+output_dir = "public"
+preserve_dotfiles_in_output = false
+minify_html = true
 compile_sass = true
-
-# Whether to build a search index to be used later on by a JavaScript library
+hard_link_static = false
 build_search_index = true
 
+ignored_content = []
+ignored_static = []
+
+# feeds
+generate_feeds = true
+feed_filenames = ["rss.xml"]
+author = "Ryoga.exe"
+default_language = "ja"
+# feed_limit = 20
+
+# sitemap
+generate_sitemap = true
+exclude_paginated_pages_in_sitemap = "none"
+
+# robots.txt
+generate_robots_txt = true
+
+taxonomies = [
+  { name = "tags", feed = true, paginate_by = 20 },
+  # { name = "ctf_event", feed = true },
+  # { name = "ctf_category" },
+  # { name = "platform" },
+  # { name = "contest", feed = true },
+]
+
 [markdown]
-# Whether to do syntax highlighting
-# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
 highlight_code = true
+highlight_theme = "OneHalfDark"
+error_on_missing_highlight = false
+render_emoji = true
+smart_punctuation = true
+insert_anchor_links = "left"
+
+[slugify]
+paths = "on"
+taxonomies = "on"
+anchors = "on"
+paths_keep_dates = false
+
+[search]
+include_title = true
+include_description = false
+include_date = false
+include_path = false
+include_content = true
 
 [extra]
-# Put all your custom variables here
+author = "Ryoga.exe"
+og_image = "/og-default.png"
+show_toc = true
+
+[extra.math]
+enable = true
+engine = "katex"
+inline_left = "$"
+inline_right = "$"
+block_left = "$$"
+block_right = "$$"
