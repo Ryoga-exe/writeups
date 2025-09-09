@@ -4,13 +4,7 @@
       {% for p in category.pages | sort(attribute="path") | sort(attribute="date") | reverse | slice(end=5) %}
         {% set parent = get_section(path=(p.components | slice(end=-1) | concat(with="_index.md") | join(sep="/"))) %}
         <li>
-          <article>
-            <a href="{{ p.permalink }}">{{ p.title }}</a>
-            {% if parent.title %}
-              <span class="badge">{{ parent.title }}</span>
-            {% endif %}
-            <time datetime="{{ p.date }}">{{ p.date | date(format="%Y-%m-%d") }}</time>
-          </article>
+          {{ self::post(post=p) }}
         </li>
       {% endfor %}
     </ul>
@@ -19,3 +13,15 @@
     <p>また記事がありません。</p>
   {% endif %}
 {% endmacro post_listing %}
+
+
+{% macro post(post) %}
+  {% set parent = get_section(path=(post.components | slice(end=-1) | concat(with="_index.md") | join(sep="/"))) %}
+  <article>
+    <a href="{{ post.permalink }}">{{ post.title }}</a>
+    {% if parent.title %}
+      <span class="badge">{{ parent.title }}</span>
+    {% endif %}
+    <time datetime="{{ post.date }}">{{ post.date | date(format="%Y-%m-%d") }}</time>
+  </article>
+{% endmacro post %}

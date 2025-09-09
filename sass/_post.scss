@@ -31,3 +31,12 @@ ul.post-list {
     border: 1px solid var(--border);
   }
 }
+
+nav[aria-label="pagination"] {
+  display: flex;
+  margin-top: 1rem;
+
+  .older {
+    margin-left: auto;
+  }
+}
