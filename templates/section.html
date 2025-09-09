@@ -1,0 +1,61 @@
+{% import "macros/post.html" as post_macros %}
+{% extends "base.html" %}
+
+{% block content %}
+  <section>
+    <h1>{{ section.title }}</h1>
+    {% if section.description %}
+      <p>{{ section.description }}</p>
+    {% endif %}
+  </section>
+
+  {% if paginator is defined %}
+    {% set pages = paginator.pages %}
+
+    {% if paginator.current_index == 1 %}
+      <section>
+        <h2>Contests</h2>
+        <ul class="post-list">
+          {% for s in section.subsections | sort | reverse %}
+            {% set sub = get_section(path=s) %}
+            <li>
+              <a href="{{ sub.permalink }}">{{ sub.title }}</a>
+              <span class="secondary">
+                {% if sub.description %} — {{ sub.description }}{% endif %}
+              </span>
+              <span class="badge">{{ sub.pages | length }} 件</span>
+            </li>
+          {% endfor %}
+        </ul>
+      </section>
+    {% endif %}
+
+    <section>
+      <h2>Writeups</h2>
+      {% if pages | length > 0 %}
+        <ul class="post-list">
+          {% for p in pages %}
+            <li>
+              {{ post_macros::post(post=p) }}
+            </li>
+          {% endfor %}
+        </ul>
+
+        <nav aria-label="pagination">
+          {% if paginator.previous %}
+            <a href="{{ paginator.previous }}" class="newer">← Newer</a>
+          {% endif %}
+          {% if paginator.next %}
+            <a href="{{ paginator.next }}" class="older">Older →</a>
+          {% endif %}
+        </nav>
+
+        {% else %}
+          <p class="secondary">また記事がありません。</p>
+        {% endif %}
+    </section>
+  {% else %}
+    {% set pages = section.pages %}
+  {% endif %}
+
+{% endblock content %}

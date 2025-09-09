@@ -1,0 +1,42 @@
+ul.post-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  article {
+    display: contents;
+  }
+
+  li {
+    padding: 0.5rem 0;
+    border-bottom: 1px dashed var(--border);
+    display: flex;
+    gap: 0.5rem;
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+
+  time {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-left: auto;
+  }
+
+  .badge {
+    display: inline-flex;
+    font-size: 0.8rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 0.4rem;
+    background: var(--badge-bg);
+    border: 1px solid var(--border);
+  }
+}
+
+nav[aria-label="pagination"] {
+  display: flex;
+  margin-top: 1rem;
+
+  .older {
+    margin-left: auto;
+  }
+}

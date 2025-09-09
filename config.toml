@@ -1,0 +1,72 @@
+base_url = "https://writeups.ryoga.dev"
+title = "Writeups"
+description = "Ryoga の Writeup 置き場"
+
+output_dir = "public"
+preserve_dotfiles_in_output = false
+minify_html = true
+compile_sass = true
+hard_link_static = false
+build_search_index = false
+
+ignored_content = []
+ignored_static = []
+
+# feeds
+generate_feeds = true
+feed_filenames = ["atom.xml"]
+author = "Ryoga.exe"
+default_language = "ja"
+# feed_limit = 20
+
+# sitemap
+generate_sitemap = true
+exclude_paginated_pages_in_sitemap = "none"
+
+# robots.txt
+generate_robots_txt = true
+
+taxonomies = [
+  { name = "tags", feed = true, paginate_by = 20 },
+  # { name = "ctf_event", feed = true },
+  # { name = "ctf_category" },
+  # { name = "platform" },
+  # { name = "contest", feed = true },
+]
+
+[markdown]
+highlight_code = true
+highlight_theme = "OneHalfDark"
+error_on_missing_highlight = false
+render_emoji = true
+smart_punctuation = true
+insert_anchor_links = "left"
+
+[slugify]
+paths = "on"
+taxonomies = "on"
+anchors = "on"
+paths_keep_dates = false
+
+[search]
+include_title = true
+include_description = false
+include_date = false
+include_path = false
+include_content = true
+
+[extra]
+og_image = "/og-default.png"
+show_toc = true
+
+[extra.math]
+enable = true
+engine = "katex"
+inline_left = "$"
+inline_right = "$"
+block_left = "$$"
+block_right = "$$"
+
+[extra.social]
+x = "https://x.com/Ryoga_exe"
+github = "https://github.com/Ryoga-exe"

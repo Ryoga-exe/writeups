@@ -1,0 +1,20 @@
+{% import "macros/post.html" as post_macros %}
+{% extends "base.html" %}
+
+{% block content %}
+  <section>
+    <h1>Writeups</h1>
+    <p>{{ config.description }}</p>
+  </section>
+
+  {% set_global categories = [] %}
+  {% for sub in section.subsections %}
+    {% set_global categories = categories | concat(with=get_section(path=sub)) %}
+  {% endfor %}
+
+  {% for category in categories %}
+    <h2>Latest {{category.title}} Writeups</h2>
+    {{ post_macros::post_listing(category=category) }}
+  {% endfor %}
+
+{% endblock content%}

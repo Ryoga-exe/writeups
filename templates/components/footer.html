@@ -1,0 +1,23 @@
+<footer>
+  <div class="container row">
+    <small>
+      &copy; {{ now() | date(format="%Y") }}
+      <a
+        href="{{ config.extra.social.x }}"
+        target="_blank"
+        rel="noopener"
+      >
+        {{ config.author }}
+      </a>
+      - made with
+      <a href="https://www.getzola.org/" target="_blank" rel="noopener">Zola</a>
+    </small>
+    <a
+      href="https://github.com/Ryoga-exe/writeups"
+      target="_blank"
+      rel="noopener"
+    >
+      {% include "icons/github.html" %}
+    </a>
+  </div>
+</footer>

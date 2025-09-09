@@ -1,0 +1,57 @@
+.container {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-block-size: 100svh;
+}
+
+// header
+header {
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(6px);
+  background: color-mix(in oklab, var(--bg) 85%, transparent);
+
+  .brand {
+    font-weight: 700;
+  }
+
+  nav {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+  }
+}
+
+// footer
+footer {
+  width: 100%;
+  margin-block-start: auto;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+
+  small {
+    font-size: 0.875rem;
+  }
+
+  svg {
+    display: block;
+    inline-size: 100%;
+    block-size: 100%;
+  }
+}
