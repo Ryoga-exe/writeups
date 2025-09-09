@@ -1,5 +1,7 @@
 {% set title = config.title %}
-{% if page.title %}
+{% if current_path is not defined %}
+  {% set title = '404 Not found | ' ~ title %}
+{% elif page.title %}
   {% set title = page.title ~ ' | ' ~ title %}
 {% elif section.title %}
   {% set title = section.title ~ ' | ' ~ title %}
