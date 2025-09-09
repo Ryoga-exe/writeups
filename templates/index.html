@@ -7,23 +7,14 @@
     <p>{{ config.description }}</p>
   </section>
 
-  {% set ctf = get_section(path="ctf/_index.md") %}
-  {% set cp = get_section(path="cp/_index.md") %}
-  {% set others = get_section(path="others/_index.md") %}
+  {% set_global categories = [] %}
+  {% for sub in section.subsections %}
+    {% set_global categories = categories | concat(with=get_section(path=sub)) %}
+  {% endfor %}
 
-  <section>
-    <h2>Latest CTF Writeups</h2>
-    {{ post_macros::post_listing(category=ctf) }}
-  </section>
-
-  <section>
-    <h2>Latest CP Writeups</h2>
-    {{ post_macros::post_listing(category=cp) }}
-  </section>
-
-  <section>
-    <h2>Latest Other Writeups</h2>
-    {{ post_macros::post_listing(category=others) }}
-  </section>
+  {% for category in categories %}
+    <h2>Latest {{category.title}} Writeups</h2>
+    {{ post_macros::post_listing(category=category) }}
+  {% endfor %}
 
 {% endblock content%}
